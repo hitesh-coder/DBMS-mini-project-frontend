@@ -9,7 +9,7 @@ const createToken = (id) => {
   });
 };
 
-const messageTime = 3000;
+const messageTime = 5000;
 
 export default createStore({
   state: {
