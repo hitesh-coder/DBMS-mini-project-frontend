@@ -172,11 +172,7 @@
                         <tr>
                             <th scope="row">Profile Photo</th>
                             <td>
-                                <img
-                                    src="suga.jpg"
-                                    class="rounded-circle img-fluid"
-                                    style="width: 100px; height: 100px"
-                                />
+                                <i class="fas fa-user" style="font-size: 36px"></i>
                             </td>
                         </tr>
                         <tr>
