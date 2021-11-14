@@ -1,71 +1,249 @@
 <template>
-  <div class="home">
-    <div class="container shadow p-3 mb-5 bg-body rounded ">
-      <div class="row justify-content-center">
-        <h2 class="bg-dark text-white h-100">Student Profile</h2>
-        <div class="d-flex p-2 bd-highlight">
-          <div class="list-group position-relative top-50 start-50 translate-middle">
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 justify-content-center w-100 p-3">Profile Photo </li>
-              <li class="list-group-item item-2 w-100 p-3">
-                <img src="suga.jpg" class="rounded-circle" style="width: 100px; height: 100px;" />
-              </li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Name of Student</li>
-              <li class="list-group-item item-2 w-100 p-3">Full name of student</li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Registration Number</li>
-              <li class="list-group-item item-2 w-100 p-3">78965421M</li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Email Id </li>
-              <li class="list-group-item item-2 w-100 p-3">Student@gmail.com</li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Mobile No</li>
-              <li class="list-group-item item-2 w-100 p-3">8293064197</li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Address</li>
-              <li class="list-group-item item-2 w-100 p-3">Full address of student</li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Academic year</li>
-              <li class="list-group-item item-2 w-100 p-3">2021-22</li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Semester</li>
-              <li class="list-group-item item-2 w-100 p-3">5</li>
-            </ul>
-            <ul class="list-group list-group-horizontal">
-              <li class="list-group-item item-1 w-100 p-3">Program</li>
-              <li class="list-group-item item-2 w-100 p-3"> B.E. Computer Engineering</li>
-            </ul>
-          </div>
+    <div class="home">
+        <div class="container bg-body">
+            <div class="border box mx-auto custom-rounded overflow-hidden mt-5">
+                <div
+                    class="
+                        bg-dark
+                        text-white
+                        top-rounded
+                        p-2
+                        m-0
+                        d-flex
+                        flex-row
+                        justify-content-between
+                        align-items-center
+                    "
+                >
+                    <span class="fs-3 fw-bold"> Student Profile </span>
+                    <span>
+                        <i
+                            class="fas fa-user-edit me-2 fs-5"
+                            style="cursor: pointer"
+                            data-bs-toggle="modal"
+                            data-bs-target="#profileModal"
+                        ></i>
+                    </span>
+
+                    <!-- Modal -->
+                    <div
+                        class="modal fade"
+                        id="profileModal"
+                        tabindex="-1"
+                        aria-labelledby="profileModalLabel"
+                        aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content text-dark">
+                                <div class="modal-header">
+                                    <h5
+                                        class="modal-title"
+                                        id="profileModalLabel"
+                                    >
+                                        Edit your profile
+                                    </h5>
+                                    <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"
+                                    ></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <fieldset disabled>
+                                            <div class="mb-3">
+                                                <label
+                                                    for="userEmail"
+                                                    class="form-label"
+                                                    >Email address</label
+                                                >
+                                                <input
+                                                    type="email"
+                                                    class="form-control"
+                                                    id="userEmail"
+                                                    aria-describedby="userEmail"
+                                                    v-model= profileInfo.email
+                                                />
+                                                <div
+                                                    id="emailHelp"
+                                                    class="form-text"
+                                                >
+                                                    We'll never share your email
+                                                    with anyone else.
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                        <div class="mb-3">
+                                            <label
+                                                for="userName"
+                                                class="form-label"
+                                                >Name</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="userName"
+                                                aria-describedby="userName"
+                                                v-model= profileInfo.name
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label
+                                                for="registrationNumber"
+                                                class="form-label"
+                                                >Registration Number</label
+                                            >
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="registrationNumber"
+                                                aria-describedby="registrationNumber"
+                                                v-model= profileInfo.registrationNumber
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label
+                                                for="academicYear"
+                                                class="form-label"
+                                                >Academic Year</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="academicYear"
+                                                aria-describedby="academicYear"
+                                                v-model= profileInfo.academicYear
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label
+                                                for="semester"
+                                                class="form-label"
+                                                >Semester</label
+                                            >
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="semester"
+                                                aria-describedby="semester"
+                                                v-model= profileInfo.semester
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label
+                                                for="program"
+                                                class="form-label"
+                                                >Program</label
+                                            >
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="program"
+                                                aria-describedby="program"
+                                                v-model= profileInfo.program
+                                            />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary"
+                                        data-bs-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary"
+                                        data-bs-dismiss="modal"
+                                        @click="updateProfileInfo()"
+                                    >
+                                        Save changes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped mb-0">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Profile Photo</th>
+                            <td>
+                                <img
+                                    src="suga.jpg"
+                                    class="rounded-circle img-fluid"
+                                    style="width: 100px; height: 100px"
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Name of Student</th>
+                            <td>{{ profileInfo.name }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Registration Number</th>
+                            <td>{{ profileInfo.registrationNumber }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Email Id</th>
+                            <td>{{ profileInfo.email }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Academic year</th>
+                            <td>{{ profileInfo.academicYear }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Semester</th>
+                            <td>{{ profileInfo.semester }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Program</th>
+                            <td>{{ profileInfo.program }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
-  components: {
-  },
-}
+    name: "Home",
+    components: {},
+    computed: {
+        profileInfo() {
+            return this.$store.getters.profileInfo;
+        },
+    },
+    methods: {
+        updateProfileInfo() {
+            this.$store.dispatch("updateProfileInfo")
+        }
+    }
+};
 </script>
 
 <style lang="scss">
-  .item-1{
-      width: 300px !important;
-    }
+.box {
+    width: fit-content;
+}
 
-    .item-2{
-      width:  400px !important;
-    }
+.top-rounded {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.item-1 {
+    width: 300px !important;
+}
+
+.item-2 {
+    width: 400px !important;
+}
 </style>

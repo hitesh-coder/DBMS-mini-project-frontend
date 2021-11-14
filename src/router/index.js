@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import store from '@/store'
 
+import postService from '../postServices';
+
 const jwt = require('jsonwebtoken');
 
 const routes = [
@@ -56,19 +58,28 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to,from,next) => {
+const getUserProfile = async (data) => {
+  let profileData = {
+    email: data.user.email
+  }
+  let res = await postService.updateUserProfile(profileData);
+  store.commit("updateProfileInfo", res)
+}
+
+router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     const token = localStorage.getItem("jwt");
 
     if (token) {
       jwt.verify(token, 'Secret Code', (err, decodedToken) => {
         if (err) {
-          store.commit("updateErrorMessage",err.message)
+          store.commit("updateErrorMessage", err.message)
           next({
             name: "Login"
           })
         } else {
-          store.commit("updateCurrentUserId",decodedToken.id);
+          getUserProfile(decodedToken);
+          store.commit("updateCurrentUserId", decodedToken.user.id);
           next();
         }
       })
@@ -87,7 +98,7 @@ router.beforeEach((to,from,next) => {
           store.commit("updateErrorMessage", err.message)
           next()
         } else {
-          store.commit("updateCurrentUserId", decodedToken.id);
+          store.commit("updateCurrentUserId", decodedToken.user.id);
           next({
             name: "Home"
           });

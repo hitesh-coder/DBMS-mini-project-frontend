@@ -97,8 +97,13 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 .messages {
     top: 60px;
     right: 50px;
+}
+
+.custom-rounded{
+    border-radius: 1rem;
 }
 </style>
